@@ -46,13 +46,14 @@
 > 复制(拷贝)仓库中的代码下来到本地  
 > ``` git clone <项目SSH地址> ```  
 > 将本地代码保存到暂存区  
-> ``` git add ```  
+> ``` git add . ```  
 > 将暂存区的代码提交到本地仓库  
 > ``` git commit -m"<说明或注释>" ```  
 > 将本地仓库的代码上传(同步)到git仓库  
-> ``` git push ```  
+> ``` git push origin master ```
+>>   
 > 将git仓库的代码拉取(获取)到本地仓库  
-> ``` git pull ```  
+> ``` git pull origin master ```  
 
 ![img](2.png)
 
