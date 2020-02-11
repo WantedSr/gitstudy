@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>登陆注册</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="jquery.min.js"></script>
+</head>
+<body>
+    
+    <form action="http://localhost:3000/login" method="get" role="form">
+        <legend>Form title</legend>
+    
+        <div class="form-group">
+            <label for="username">用户名</label>
+            <input type="text" name="username" class="form-control" id="username" placeholder="Input field">
+        </div>
+        
+        <div class="form-group">
+            <label for="password">密码</label>
+            <input type="password" name="password" class="form-control" id="password" placeholder="Input field">
+        </div>
+        
+    
+        <button type="button" id='login' class="btn btn-primary">Submit</button>
+    </form>
+    
+    
+    <script>
+        $(function(){
+            $("#login").on("click",()=>{
+                $obj = {
+                    username : $("#username").val(),
+                    password : $("#password").val()
+                }
+                $.ajax({
+                    type:'post',
+                    url:'http://localhost:3000/login',
+                    contentType:"application/json",
+                    dataType:'text',
+                    // data:$('form:eq(0)').serialize(),
+                    data:JSON.stringify($obj),
+                    success:(e)=>{
+                        console.log(e);
+                    },
+                    error:(err)=>{
+                        console.log(err);
+                    }
+                })
+            })
+        })
+    </script>
+
+</body>
+</html>

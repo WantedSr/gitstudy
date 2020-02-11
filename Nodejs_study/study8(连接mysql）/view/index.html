@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="user"></div>
+    <button id="getData">获取数据</button>
+
+    <script>
+        $(function(){
+            $("#getData").click(()=>{
+                $.ajax({
+                    type:"get",
+                    url:"http://localhost:3000/abc",
+                    success:(e)=>{
+                        // $res = JSON.parse(e);
+                        $res = e;
+                        // console.log(e);
+                        $str = "";
+                        for($i=0;$i<$res.length;$i++){
+                            $row = $res[$i];
+                            $str += "<ul>";
+                            $str += "<li>"+$row['id']+"</li>";
+                            $str += "<li>"+$row['username']+"</li>";
+                            $str += "<li>"+$row['password']+"</li>";
+                            $str += "<li>"+$row['state']+"</li>";
+                            $str += "<li>"+$row['sfz']+"</li>";
+                            $str += "</ul>";
+                        }
+                        $(".user").html($str);
+                    },
+                    error:(err)=>{
+                        console.log(err);
+                        $(".user").html("获取数据错误!!");
+                    }
+                })
+            })
+            // console.log(12345);
+        });
+    </script>
+
+</body>
+</html>

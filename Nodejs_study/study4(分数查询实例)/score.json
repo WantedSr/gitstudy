@@ -1,0 +1,16 @@
+{
+    "zby":{
+        "Chinese":150,
+        "Math":150,
+        "English":150,
+        "Sport":100,
+        "Move":150
+    },
+    "xxx":{
+        "Chinese":0,
+        "Math":0,
+        "English":0,
+        "Sport":1,
+        "Move":0
+    }
+}
