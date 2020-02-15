@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理员页面</title>
+</head>
+<body>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>username</th>
+                <th>password</th>
+                <th>state</th>
+            </tr>
+            {{each list}}
+                <tr>
+                    <td>{{$value.id}}</td>
+                    <td>{{$value.username}}</td>
+                    <td>{{$value.password}}</td>
+                    <td>{{$value.state}}</td>
+                </tr>
+            {{/each}}
+        </thead>
+    </table>
+</body>
+</html>
