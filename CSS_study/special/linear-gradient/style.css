@@ -1,0 +1,28 @@
+body,html{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FFF;
+    background: linear-gradient(135deg,#E55D87,#5FC3E4,#CC95C0,#DBD4B4,#7AA1D2,#56B4D3,#348F50,#56B4D3,#7AA1D2,#DBD4B4,#CC95C0,#5FC3E4,#E55D87);
+    background-size: 1200%;
+    animation: bganimation 25s infinite linear;
+}
+
+body div{
+    text-transform: uppercase;
+    font-size: 20px
+}
+
+@keyframes bganimation{
+    0%{
+        background-position: 0 50%;
+    }
+    50%{
+        background-position: 100% 50%;
+    }
+}

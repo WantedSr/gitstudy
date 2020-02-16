@@ -1,0 +1,84 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    outline: none;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+body,html{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #34495e;
+}
+.nav{
+    margin: 0 auto;;
+}
+.nav ul{
+    width: 100%;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+    background-color: #2c3e50;
+}
+.nav a{
+    width: 100px;
+    text-align: center;
+    display: block;
+    padding: 12px 0;
+    color: #fff;
+    position: relative;
+    z-index: 2;
+    transition: .4s;
+}
+
+.bgc{
+    position: absolute;
+    width: 100px;
+    height: 100%;
+    left: 0;
+    background-color: #e67e22;
+    z-index: 1;
+    transition: .4s;
+    border-radius: 3px;
+}
+.nav:nth-child(2) .bgc{
+    height: 3px;
+    bottom: 0;
+}
+
+.nav .start-1 , li:nth-child(1):hover ~ .bgc{
+    left: 0;
+}
+.nav .start-2 , li:nth-child(2):hover ~ .bgc{
+    left: 100px;
+}
+.nav .start-3 , li:nth-child(3):hover ~ .bgc{
+    left: 200px;
+}
+.nav .start-4 , li:nth-child(4):hover ~ .bgc{
+    left: 300px;
+}
+.nav .start-5 , li:nth-child(5):hover ~ .bgc{
+    left: 400px;
+}
+.nav .start-6 , li:nth-child(6):hover ~ .bgc{
+    left: 500px;
+}
+
+
+
+
+
+
+
+
+

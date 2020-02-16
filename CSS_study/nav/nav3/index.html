@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="nav">
+        <ul>
+            <li><a href='#'>home</a></li>
+            <li><a href='#'>product</a></li>
+            <li><a href='#'>aboutus</a></li>
+            <li><a href='#'>friendlink</a></li>
+            <li><a href='#'>login</a></li>
+            <li><a href='#'>register</a></li>
+            <div class="bgc start-home"></div>
+        </ul>
+    </div>
+    <div class="nav">
+        <ul>
+            <li><a href='#'>home</a></li>
+            <li><a href='#'>product</a></li>
+            <li><a href='#'>aboutus</a></li>
+            <li><a href='#'>friendlink</a></li>
+            <li><a href='#'>login</a></li>
+            <li><a href='#'>register</a></li>
+            <div class="bgc start-home"></div>
+        </ul>
+    </div> 
+
+    <script>
+        $(function(){
+            $('.nav a').click(function(){
+                $index1 = $('.nav a').index($(this));
+                $index2 = $(".nav").index($(this).parent().parent().parent());
+                $class = "start-"+($index1 + 1);
+                $('.bgc').eq($index2).attr('class',"bgc " + $class);
+            });
+        })
+    </script>
+</body>
+</html>

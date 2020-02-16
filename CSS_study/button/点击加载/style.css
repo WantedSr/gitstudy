@@ -1,0 +1,116 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+body,html{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #ff6e7f,#bfe9ff);
+}
+button{
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+.login{
+    position: relative;
+    width: 12rem;
+    height: 5rem;
+    border-radius: 5rem;
+    background-color: #000;
+    color: #FFF;
+    font-weight: bold;
+    font-size: 1.5rem;
+    box-shadow: 0 8px 28px black;
+
+    transition: .5s;;
+}
+.login p{
+    text-transform: uppercase;;
+}
+
+.active.login{
+    width: 5rem;
+    color: transparent;
+}
+
+
+
+
+
+.loading{
+    opacity: 0;
+    transition: .5s;
+}
+
+.active .loading{
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 1;
+
+    width: 70%;
+    height: 40%;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+
+}
+
+.active .loading div{
+    width: 0.3rem;
+    height: 0.3rem;
+    border-radius: 50%;
+    background-color: #fff;;   
+    animation: .9s loading ease-in-out infinite alternate;
+}
+
+@keyframes loading{
+    100%{
+        transform: translate(0,-1rem);
+    }
+}
+
+.active .loading div:nth-child(2){
+    animation-delay: .2s;;
+}
+.active .loading div:nth-child(3){
+    animation-delay: .4s;
+}
+
+.verity .loading{
+    opacity: 0;
+}
+
+
+
+.checkmark{
+    position: absolute;
+    left: 50%;
+    top: 57%;
+    transform: translate(-50%,-50%);
+
+    stroke-dashoffset: 36px;
+    stroke-dasharray: 36px;;
+}
+
+.verity .checkmark{
+    animation: .6s show forwards;
+}
+
+@keyframes show{
+    to{
+        stroke-dashoffset: 0px;
+    }
+}

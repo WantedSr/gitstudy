@@ -1,0 +1,34 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+body,html{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: linear-gradient(135deg,#2b5876,#4e4376);
+}
+
+div h1{
+    text-transform: uppercase;
+    font-family: "华文琥珀";
+    font-size: 200px;
+
+    background-image: url('./bg.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    /* -webkit-text-fill-color: transparent; */
+    color: transparent;
+    -webkit-background-clip: text;
+
+    cursor: pointer;
+}

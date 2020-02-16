@@ -1,0 +1,100 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+
+body,html{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wrap{
+    width: 100px;
+    height: 300px;
+    position: relative;
+    margin: 0 30px;
+}
+.wrap::after{
+    width: 75px;
+    height: 40px;
+    border-radius: 100%;;
+    display: block;
+    position: absolute;
+    bottom: -20px;
+    z-index: -1;
+    background-color: #000;
+    content: "";
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    animation: shadow 500ms infinite alternate
+}
+.red.wrap::after{
+    animation-delay: 100ms;
+}
+.blue.wrap::after{
+    animation-delay: 300ms;
+}
+.green.wrap::after{
+    animation-delay: 200ms;
+}
+.ball{
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0px;
+    border-radius: 100%;
+    animation: jumpball 500ms infinite alternate;
+}
+.red .ball{
+    animation-delay: 100ms;
+    background: linear-gradient(#c0392b,#e74c3c);
+}
+.green .ball{
+    animation-delay: 200ms;
+    background: linear-gradient(#27ae60,#2ecc71);
+}
+.blue .ball{
+    animation-delay: 300ms;
+    background: linear-gradient(#2980b9,#3498db);
+}
+
+@keyframes jumpball{
+    0%{
+        transform: translateY(0px);
+    }
+    100%{
+        transform: translateY(-150px);
+    }
+}
+
+@keyframes shadow{
+    0%{
+        opacity: 0.8;
+        transform: scale(0.8);
+    }
+    100%{
+        opacity: 0.5;
+        transform: scale(0.5);
+    }
+}
+
+
+
+
+
+
+
+
+
+

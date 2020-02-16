@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+    <button class="firefly">
+        <p>萤火虫</p>
+        <div class="lighting">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </button>
+    <script>
+        $(function(){
+            let lgh = $('.lighting ul li').length;
+            $('.lighting li').each(function(i){
+                $(this).css({
+                    left: i * (100/lgh) + "%",
+                    bottom : randomNum(-20,10) + "%",
+                    animationDuration: randomNum(1,5) + "s"
+                });
+            });
+
+            function randomNum(max,min){
+                var num = Math.floor(Math.random() * (max-min+1) + min);
+                return num;
+            }
+        })
+    </script>
+</body>
+</html>
