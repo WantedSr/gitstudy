@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+    <ul>
+        <li><a class="active" href="#">Home</a></li>
+        <li><a href="#">goods</a></li>
+        <li><a href="#">aboutus</a></li>
+        <li><a href="#">login</a></li>
+        <li><a href="#">register</a></li>
+        <li><a href="#">HelloWorld</a></li>
+        <div class="bgc"></div>
+    </ul>
+    <script>
+        $(function(){
+            $now = 0;
+            $(".bgc").css("width",$('ul li:eq(0)').width() + 'px');
+            $('ul a').hover(function(){
+                $index = $('ul a').index($(this));
+                go($index);              
+            },function(){
+                go($now);
+            });
+
+            $("ul a").click(function(){
+                $index = $('ul a').index($(this));
+                $now = $index;
+            })
+
+            function go($num){
+                $left = 0;
+                for($i=$num;$i>=0;$i--){
+                    $l = $('ul a').eq($i).parent().prev().width();
+                    if($l){
+                        $left += $l;
+                    }else{
+                        continue;
+                    }
+                }
+                $w = $("ul a").eq($num).parent().width();
+                $('ul a').eq($num).addClass("active").parent().siblings().children().removeClass("active");
+                $(".bgc").css({
+                    left: $left,
+                    width: $w
+                }); 
+            }
+        })
+    </script>
+</body>
+</html>
