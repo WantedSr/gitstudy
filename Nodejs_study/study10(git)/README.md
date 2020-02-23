@@ -23,7 +23,7 @@
 > 创建完仓库，并且安装完 git ，接下来就要配置一些参数了
 > ### 1. git账户邮箱绑定
 >> ``` git config --global user.name" 用户名称 " ```  
->> ``` git config --blobal user.email" 登录邮箱 " ```
+>> ``` git config --global user.email" 登录邮箱 " ```
 > ### 2. 生成**密钥**
 >> ``` ssh-keygen -t rsa -C " 登录邮箱 " ```  
 >> 输入这段代码后，顺利的话在个人用户的文件夹下会生成一个.ssh的文件夹，

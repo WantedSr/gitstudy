@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./lib/vue.js"></script>
+    <style>
+        /* v-clock 要配合 css display:none 使用 */
+        [v-clock]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- 使用 v-clock 可以解决“插值表达式”闪烁的问题 -->
+        <p v-clock>{{msg}}</p>
+        <!-- v-text 有着“插值表达式”的作用，可以替换掉原来的值，没有闪烁问题 -->
+        <p v-text='msg'>asdf</p>
+        <!-- ”插值表达式“可以在元素其他位置插入值，而 v-text 不行 -->
+        <p>+++++++{{msg}}-----</p>
+
+        <p>{{element}}</p>
+        <p v-html='element'></p>
+
+        <!-- v-bind 可以用于将数据渲染到html属性的值中！ -->
+        <p v-bind:title="title" v-text='msg'></p>
+        <!-- v-bind 可以简写为 “ : ” -->
+        <p :title="title" v-html='element'></p>
+        <!-- v-bind 可以将属性的值变成 js表达式 所以可以进行一些 js 的操作 -->
+        <p :title="title+'123456'" v-text='element'></p>
+    
+        <!-- v-on 用于给元素进行事件绑定 -->
+        <input type="button" value="点击出发 v-on:click 事件" v-on:click='show'>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                msg: "123",
+                element: "<h1>Hello World</h1>",
+                title: "这是一个title"
+            },
+            methods:{
+                show:function(){
+                    alert("Hello");
+                },
+            }
+        })
+    </script>
+
+</body>
+</html>

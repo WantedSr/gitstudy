@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>study4</title>
+    <script src="./lib/vue.js"></script>
+    <style>
+        .inner{
+            background-color: gainsboro;
+            height: 150px;
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- 
+        事件修饰符：
+            格式：  @click.[修饰符]="事件"
+            常用修饰符与作用:
+                > stop      停止冒泡
+                > prevent   阻止默认行为
+                > capture   添加事件倾听器时使用事件捕获模式
+                > self      只当事件在该元素本身（比如不是子元素）触发是触发回调
+                > once      事件只触发一次
+     -->
+
+    <div id="app">
+        <div class="inner" @click.capture='divHandler'>
+            <input type="button" value="快戳我" @click.stop="btnHandler">
+        </div>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+
+            },
+            methods: {
+                divHandler(){
+                    console.log('这是触发了 inner div 的点击事件');
+                },
+                btnHandler(){
+                    console.log("这是触发了 inner input 的点击事件")
+                }
+            }
+        })
+    </script>
+
+</body>
+</html>

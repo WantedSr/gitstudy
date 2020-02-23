@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 1. 引入 Vue 的包 -->
+    <script src="./node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    
+    <!-- 从这开始，以下内容即为 MVVM框架 中的 V 层 -->
+    <!-- Vue 实例所控制的元素区域，就是 V 层 -->
+    <!-- 将来 new 的 Vue 实例，会控制这个元素中的所有内容 -->
+    <div id="app">
+        <!-- 将数据渲染到 p 标签中 -->
+        <p>{{ msg }}</p>
+    </div>
+    <!-- 这里结束 V 层 -->
+
+
+
+    <script>
+        // 2. 创建一个 Vue 的实例
+        // 当我们导入包之后，在浏览器内存中，就多了一个 Vue 构造函数
+        // 注意: 我们 new 出来的这个 vm 对象，就是 MVVM 实例中的 VM 调度者  
+        var vm = new Vue({
+            el: "#app", // el => element , 表示当前我们 new 的这个 Vue 实例，要控制页面上的那个区域
+            // 注意： data 就是 MVVM 中的 M，用于保存每个页面的数据
+            data: {     // data => data , data属性中，存放的是 el 中要用到的数据
+                msg: '欢迎来到 Vue ！！！',     // 通过 Vue 提供的命令，很方便的就能把数据渲染到页面
+                // 【 前端的 Vue 之类的框架，不提倡我们去手动操作 Dom 元素 】
+            }
+        })
+
+
+
+        // 旧的开发渲染数据
+        // 操作 DOM 元素
+        // $("#content").text(data.msg)
+
+
+
+    </script>
+
+    <script>
+    </script>
+
+</body>
+</html>

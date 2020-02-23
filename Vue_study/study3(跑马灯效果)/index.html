@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>跑马灯效果</title>
+    <script src="./lib/vue.js"></script>
+</head>
+<body>
+    
+    <div id="app">
+        <input type="button" :value="msg2" @click='lang'>
+        <input type="button" :value="msg3" @click='down'>
+        <p>{{msg1}}</p>
+    </div>  
+
+    <script>
+        var vm = new Vue({
+            // 在 vm 实例中，若要会的data上的数据，或想要调用methods的方法
+            // 必须通过this数据属性名，或this.方法名来进行访问
+            // 这里的 this 代表我们 new 出来的 vm 实例对象
+            el: "#app",
+            data:{
+                msg1: "猥琐发育，别浪~",
+                msg2: "浪起来",
+                msg3: "低调",
+                go: null,
+            },
+            methods:{
+                lang(){
+                    if(this.go != null){
+                        return;
+                    }
+                    this.go = setInterval(()=>{
+                        let arr = this.msg1.split("");
+                        arr.push(arr.shift());
+                        this.msg1 = arr.join('');
+                    },100)
+                },
+                down(){
+                    clearInterval(this.go);
+                    this.go = null;
+                }
+            }
+        }); 
+    </script>
+
+</body>
+</html>
