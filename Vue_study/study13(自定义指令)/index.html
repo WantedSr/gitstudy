@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./lib/vue.js"></script>
+    <link rel="stylesheet" href="./lib/bootstrap.css">
+</head>
+<body>
+    
+    <div id="app" class="container-fluid"> 
+
+        
+        <div class="panel panel-primary">
+              <div class="panel-heading">
+                    <h3 class="panel-title">添加品牌</h3>
+              </div>
+              <div class="panel-body form-inline">
+                    <label for="id">ID:</label>
+                    <input type="text" v-model="id" id="id" @keyup.enter="add" class="form-control">
+                    <label for="name">NAME:</label>
+                    <input type="text" name="name" v-model="name" @keyup.enter="add" id="name" class="form-control">
+                    <input type="button" @click="add" value="添加" class="btn btn-primary">
+                    <label for="search">搜索关键字</label>
+                    <input type="text" class="form-control" v-focus name="search" v-model="keywords" id="search">
+                </div>
+        </div>
+        
+
+        <table class="table table-hover table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Ctime</th>
+                    <th>Operation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(item, i) in search(keywords)" :key="item.id">
+                    <td v-text="item.id"></td>
+                    <td v-text="item.name"></td>
+                    <td>{{ item.ctime | maketime }}</td>
+                    <td><a href="#" @click.prevent="del(item.id)">删除</a></td>
+                </tr>
+            </tbody>
+        </table>
+        
+
+    </div>
+
+    <script>
+
+        // vue 的所有指令都是由 v- 前缀开头的
+        // 使用 Vue.directive() 定义全局的指令
+        // 格式:    Vue.directive( 指令名称（定义时不需要添加 v- 前缀） , 对象（设置特定的阶段进行特定的操作） )
+        // 调用时则需要添加前缀
+
+        Vue.directive('focus',{
+            // 对象里的每个函数叫 钩子函数
+            // 每个函数的第一个参数永远是 el ， 表示被绑定了指令的那个元素，那个 el 参数是一个原生的 JS 对象
+            bind(el){       // 每当指令绑定到元素上的时候，会立即执行这个 bind 函数，只执行一次
+                // 在元素刚绑定指令是，还没有插入 Dom 中， 这时调用 focus 无效
+                // el.focus();
+                console.log('start');
+            },
+            inserted(el){   // inserted 表示元素插入到 DOM 中的时候，会执行 inserted 函数
+                // 元素插入到 DOM 时
+                el.focus();
+            },
+            update(el){    // 当 VNode 更新的时候，会执行 updated , 可能会触发多次
+                console.log('asf');
+            }
+        });
+     
+        Vue.filter("maketime",function(data,type=""){
+            var dt = new Date(data);
+            var y = dt.getFullYear();
+            var m = dt.getMonth() + 1;
+            var d = dt.getDate();
+            var h = dt.getHours();
+            var i = dt.getMinutes();
+            var s = dt.getSeconds();
+            if(type.toLowerCase() == 'yyyy-mm-dd'){
+                return `${y}-${m}-${d}`;
+            }
+            else{
+                return `${y}-${m}-${d} ${h}:${i}:${s}`;
+            }
+        })
+        
+        var vm = new Vue({
+            el: "#app",
+            data:{
+                id: "",
+                name: "",
+                keywords: "",
+                list:[
+                    {
+                        id: 1,
+                        name: "奔驰",
+                        ctime: new Date(),
+                    },
+                    {
+                        id: 2,
+                        name: "宝马",
+                        ctime: new Date(),
+                    },
+                ]
+            },
+            methods:{
+                add(){
+                    this.list.push({id: this.id,name: this.name , ctime: new Date()});
+                    this.id = this.name = "";
+                },
+                del(id){
+                    var index = this.list.findIndex(item => {
+                        if(item.id == id){
+                            return true;
+                        }
+                    });
+                    this.list.splice(index,1);
+                },
+                search(keywords){
+                    return this.list.filter(item=>{
+                        if(item.name.includes(keywords)){
+                            return item;
+                        }
+                    });
+                },
+            }
+        })
+
+    </script>
+
+</body>
+</html>

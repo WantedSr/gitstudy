@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="lib/vue.js"></script>
+    <style>
+        .red{
+            color: red;;
+        }
+        .thin{
+            font-weight: 200;;
+        }
+        .italic{
+            font-style: italic;
+        }
+        .active{
+            letter-spacing: 0.5em;
+        }
+    </style>
+</head>
+<body>
+    <!-- 利用 Vue 属性绑定 来为元素设置样式(class)-->   
+    <div id="app">
+        <!--
+             第一种使用方式，直接传递一个数组
+             ( 需要通过 v-bind 进行数据绑定 )
+        -->
+        <h1 :class="['thin','italic']">这是一个很大的H1！！！！</h1>
+        <!-- 可以在数组中使用三元表达式 -->
+        <h1 :class="['thin','italic',flag?'active':'']">这是一个很大的H1！！！！</h1>
+        <!-- 也可以在数组中使用对象的形式( 当 flag 为 true 时，激活 active 的样式 ) -->
+        <h1 :class="['thin','italic',{'active':flag}]">这是一个很大的H1！！！！</h1>
+        
+        
+        <!-- 
+            第二种方式，直接传递一个对象  
+            ( 也需要通过 v-bind 进行数据绑定 )
+         -->
+         <!-- 当属性值为 true 时，对应属性名的样式则触发 -->
+         <h1 :class="{'red':true,'thin':true,'italic':true,'active':false}">这是一个很大的H1！！！！</h1>
+         <h1 :class="classObj">这是一个很大的H1！！！！</h1>
+
+    </div> 
+
+
+    <div id="app">
+
+    </div>
+
+
+
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                flag: true,
+                classObj: {
+                    red: true,
+                    thin: true,
+                    italic: false,
+                    active: true
+                }
+            },
+            methods: {
+
+            }
+        })
+    </script>
+
+</body>
+</html>

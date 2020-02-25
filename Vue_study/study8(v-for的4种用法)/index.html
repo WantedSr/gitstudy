@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./lib/vue.js"></script>
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- v-for 的四种用法 -->
+    <div id="app">
+        <!-- 1. 循环普通数组 -->
+        <!-- arr.foreach((item , i , arr)=>{}) -->
+        <p v-for="(item , i) in list1" v-text="item+'----'+i">hahaha</p>
+        
+        <!-- 2. 循环对象数组 -->
+        <ul>
+            <input type="text" v-model='msg1'>
+            <input type="text" v-model='msg2'>
+            <input type="button" value="add" @click='add'>
+            <li v-for="(user, i) in list2" :key="user.id">
+                <input type="checkbox" name="" id="">
+                {{user.id}}---{{user.user}}-----{{i}}
+            </li>
+        </ul>
+
+        <!-- 3. 循环对象 -->
+        <ul>
+            <li v-for="(val,key,i) in list3" v-cloak>{{key}}={{val}}=>{{i}}</li>
+        </ul>
+
+        <!-- 4. 迭代数字 -->
+        <ul>
+            <li v-for="count in 10">这是第{{count}}</li>
+        </ul>
+
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data:{
+                msg1: "",
+                msg2: "",
+                list1: [1,2,3,4,5],
+                list2: [
+                    {
+                        id: 1,
+                        user: 'xm1',
+                    },
+                    {
+                        id: 2,
+                        user: 'xm2',
+                    },
+                    {
+                        id: 3,
+                        user: 'xm3',
+                    },
+                    {
+                        id: 4,
+                        user: 'xm4',
+                    },
+                ],
+                list3:{
+                    id: 1,
+                    name: '小红',
+                    sex: '女',
+                }
+            },
+            methods:{
+                add(){
+                    this.list2.unshift({id:this.msg1,user:this.msg2});
+                }
+            }
+        })
+    </script>
+
+</body>
+</html>
